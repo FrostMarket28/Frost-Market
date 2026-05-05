@@ -3,105 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frost Market | Ultimate Digital Store</title>
+    <title>Frost Market | Premium Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --p: #00d4ff; --s: #7000ff; --bg: #020617; --card: #0f172a; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; min-height: 100vh; }
+        :root { --neon: #00d4ff; --dark: #020617; --card: #0f172a; }
+        body { font-family: 'Rajdhani', sans-serif; background: var(--dark); color: white; margin: 0; min-height: 100vh; }
         
-        nav { display: flex; justify-content: space-between; padding: 20px 5%; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--p); }
-        .logo { font-family: 'Orbitron'; color: var(--p); font-size: 1.8rem; letter-spacing: 3px; text-shadow: 0 0 10px var(--p); }
+        nav { display: flex; justify-content: space-between; padding: 20px 8%; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(10px); border-bottom: 2px solid var(--neon); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-family: 'Orbitron'; font-size: 1.8rem; color: var(--neon); text-shadow: 0 0 10px var(--neon); letter-spacing: 2px; }
         
-        .lang-btns button { background: transparent; border: 1px solid var(--p); color: white; padding: 8px 18px; cursor: pointer; border-radius: 8px; transition: 0.3s; font-weight: bold; margin-left: 10px; }
-        .lang-btns button:hover { background: var(--p); color: black; box-shadow: 0 0 15px var(--p); }
+        .lang-control button { background: transparent; border: 1px solid var(--neon); color: white; padding: 8px 15px; cursor: pointer; border-radius: 4px; font-family: 'Orbitron'; margin-left: 10px; transition: 0.3s; }
+        .lang-control button:hover { background: var(--neon); color: black; box-shadow: 0 0 15px var(--neon); }
 
-        header { text-align: center; padding: 100px 20px; background: linear-gradient(to bottom, rgba(0, 212, 255, 0.1), transparent); }
-        h1 { font-family: 'Orbitron'; font-size: 4.5rem; margin: 0; background: linear-gradient(45deg, #00d4ff, #7000ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        header p { opacity: 0.7; font-size: 1.2rem; margin-top: 20px; letter-spacing: 1px; }
+        header { text-align: center; padding: 80px 20px; }
+        h1 { font-family: 'Orbitron'; font-size: clamp(2rem, 8vw, 4rem); margin: 0; background: linear-gradient(to right, #fff, var(--neon)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header p { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; }
 
-        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; padding: 0 20px 100px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1300px; margin: 0 auto; padding: 40px 20px 100px; }
         
-        .card { background: var(--card); border-radius: 25px; padding: 40px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); transition: 0.5s; position: relative; overflow: hidden; }
-        .card:hover { transform: translateY(-20px) scale(1.02); border-color: var(--p); box-shadow: 0 20px 50px rgba(0,212,255,0.15); }
-        .card i { font-size: 4rem; color: var(--p); margin-bottom: 30px; filter: drop-shadow(0 0 10px var(--p)); }
+        .card { background: var(--card); border-radius: 20px; padding: 35px; text-align: center; border: 1px solid rgba(0, 212, 255, 0.1); transition: 0.3s; position: relative; }
+        .card:hover { transform: translateY(-10px); border-color: var(--neon); box-shadow: 0 0 30px rgba(0, 212, 255, 0.2); }
+        .card i { font-size: 3.5rem; color: var(--neon); margin-bottom: 20px; filter: drop-shadow(0 0 8px var(--neon)); }
         
-        .card h3 { font-family: 'Orbitron'; font-size: 1.8rem; margin-bottom: 15px; }
-        .card p { font-size: 1rem; color: #94a3b8; min-height: 80px; line-height: 1.6; }
+        .card h3 { font-family: 'Orbitron'; font-size: 1.6rem; margin: 10px 0; }
+        .card p { font-size: 1rem; color: #94a3b8; min-height: 60px; line-height: 1.5; }
         
-        .price { font-size: 3.5rem; font-weight: 800; margin: 30px 0; color: #fff; }
-        .price span { font-size: 1.5rem; color: var(--p); vertical-align: super; }
+        .price { font-size: 3rem; font-weight: 700; display: block; margin: 20px 0; font-family: 'Orbitron'; }
+        .price span { font-size: 1.2rem; color: var(--neon); vertical-align: super; }
 
-        .buy-btn { display: block; background: linear-gradient(45deg, var(--p), var(--s)); color: white; text-decoration: none; padding: 20px; border-radius: 15px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        .buy-btn:hover { letter-spacing: 4px; filter: brightness(1.2); box-shadow: 0 0 30px rgba(0,212,255,0.5); }
+        .buy-btn { display: block; background: var(--neon); color: black; text-decoration: none; padding: 18px; border-radius: 10px; font-weight: 800; font-family: 'Orbitron'; transition: 0.3s; text-transform: uppercase; }
+        .buy-btn:hover { background: white; transform: scale(1.05); box-shadow: 0 0 20px white; }
 
-        .badge { position: absolute; top: 20px; right: -35px; background: #ff0055; color: white; padding: 5px 40px; transform: rotate(45deg); font-size: 0.8rem; font-weight: bold; }
+        .badge { position: absolute; top: 15px; right: 15px; background: #ff0055; color: white; padding: 4px 12px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <nav>
         <div class="logo">FROST MARKET</div>
-        <div class="lang-btns">
-            <button onclick="update('tr')">TURKISH</button>
-            <button onclick="update('en')">ENGLISH</button>
+        <div class="lang-control">
+            <button onclick="changeLang('tr')">TR</button>
+            <button onclick="changeLang('en')">EN</button>
         </div>
     </nav>
 
     <header>
-        <h1 id="main-t">FROST MARKET</h1>
-        <p id="main-s">Geleceğin Dijital Deneyimine Bugün Sahip Olun</p>
+        <h1 id="h-title">FROST MARKET</h1>
+        <p id="h-sub">Yüksek Kaliteli Dijital Hizmetler ve Güvenli Ödeme</p>
     </header>
 
-    <div class="container" id="grid">
-        </div>
+    <div class="grid" id="main-grid"></div>
 
     <script>
-        const store = {
-            tr: {
-                s: "Geleceğin Dijital Deneyimine Bugün Sahip Olun",
-                btn: "SİPARİŞ VER",
-                items: [
-                    { n: "Frost Pack", p: "2.00", i: "fa-cube", l: "https://buy.stripe.com/28E00lakQfx44bVaeV", d: "Temel seviye dijital başlangıç seti. Hızlı aktivasyon ve temel destek içerir." },
-                    { n: "Frost Lite", p: "5.00", i: "fa-bolt", l: "https://buy.stripe.com/28E00lakQfx44bVaeW", d: "Daha gelişmiş özellikler ve standart kullanıcılar için optimize edilmiş performans." },
-                    { n: "Frost Plus", p: "10.00", i: "fa-gem", l: "https://buy.stripe.com/28E00lakQfx44bVaeU", d: "Profesyonel kullanım için ideal. Öncelikli destek ve özel içerik erişimi." },
-                    { n: "Frost Ultra", p: "20.00", i: "fa-crown", l: "https://buy.stripe.com/28E00lakQfx44bVaeX", d: "En popüler paket. Yüksek limitler, VIP statüsü ve tüm premium özellikler." },
-                    { n: "Frost Elite", p: "50.00", i: "fa-shield-halved", l: "https://buy.stripe.com/28E00lakQfx44bVaeY", d: "Kurumsal ve yoğun kullanıcılar için. Sınırsız destek ve maksimum hız garantisi." },
-                    { n: "Frost God", p: "100.00", i: "fa-dragon", l: "https://buy.stripe.com/28E00lakQfx44bVaeZ", d: "Sınırsız güç. Frost dünyasındaki her şeye tam erişim ve ömür boyu ayrıcalık." }
-                ]
-            },
-            en: {
-                s: "Experience The Future of Digital Services Today",
-                btn: "ORDER NOW",
-                items: [
-                    { n: "Frost Pack", p: "2.00", i: "fa-cube", l: "https://buy.stripe.com/28E00lakQfx44bVaeV", d: "Entry-level digital starter kit. Includes fast activation and basic support." },
-                    { n: "Frost Lite", p: "5.00", i: "fa-bolt", l: "https://buy.stripe.com/28E00lakQfx44bVaeW", d: "More advanced features and optimized performance for standard users." },
-                    { n: "Frost Plus", p: "10.00", i: "fa-gem", l: "https://buy.stripe.com/28E00lakQfx44bVaeU", d: "Ideal for professionals. Priority support and exclusive content access." },
-                    { n: "Frost Ultra", p: "20.00", i: "fa-crown", l: "https://buy.stripe.com/28E00lakQfx44bVaeX", d: "Most popular choice. High limits, VIP status, and all premium features." },
-                    { n: "Frost Elite", p: "50.00", i: "fa-shield-halved", l: "https://buy.stripe.com/28E00lakQfx44bVaeY", d: "For enterprise and heavy users. Unlimited support and max speed guarantee." },
-                    { n: "Frost God", p: "100.00", i: "fa-dragon", l: "https://buy.stripe.com/28E00lakQfx44bVaeZ", d: "Ultimate power. Full access to everything in Frost and lifetime privileges." }
-                ]
-            }
-        };
+        const products = [
+            { trN: "Frost Pack", enN: "Frost Pack", p: "2.00", icon: "fa-box", link: "3cI00lboUckSdMveuE", trD: "Başlangıç için temel dijital set. Hızlı aktivasyon.", enD: "Essential digital starter set. Fast activation." },
+            { trN: "Frost Lite", enN: "Frost Lite", p: "5.00", icon: "fa-bolt", link: "28E00lakQfx44bVaeW", trD: "Daha fazla esneklik ve optimize edilmiş performans.", enD: "More flexibility and optimized performance." },
+            { trN: "Frost Plus", enN: "Frost Plus", p: "10.00", icon: "fa-gem", link: "28E00lakQfx44bVaeU", trD: "Profesyonel özellikler ve öncelikli destek hattı.", enD: "Professional features and priority support line." },
+            { trN: "Frost Ultra", enN: "Frost Ultra", p: "20.00", icon: "fa-crown", link: "28E00lakQfx44bVaeX", trD: "En popüler VIP paket. Sınırsız özellik ve hız.", enD: "Most popular VIP package. Unlimited features and speed.", hot: true },
+            { trN: "Frost Elite", enN: "Frost Elite", p: "50.00", icon: "fa-shield-halved", link: "28E00lakQfx44bVaeY", trD: "Maksimum güvenlik ve tam kontrol deneyimi.", enD: "Maximum security and full control experience." },
+            { trN: "Frost God", enN: "Frost God", p: "100.00", icon: "fa-dragon", link: "28E00lakQfx44bVaeZ", trD: "Sınırsız güç. Ömür boyu tam erişim yetkisi.", enD: "Infinite power. Full lifetime access authorization." }
+        ];
 
-        function update(l) {
-            document.getElementById('main-s').innerText = store[l].s;
-            const g = document.getElementById('grid');
-            g.innerHTML = "";
-            store[l].items.forEach(item => {
-                g.innerHTML += `
+        function changeLang(lang) {
+            document.getElementById('h-sub').innerText = lang === 'tr' ? "Yüksek Kaliteli Dijital Hizmetler ve Güvenli Ödeme" : "High Quality Digital Services & Secure Payment";
+            const grid = document.getElementById('main-grid');
+            grid.innerHTML = "";
+            
+            products.forEach(item => {
+                grid.innerHTML += `
                     <div class="card">
-                        ${item.p == "20.00" ? '<div class="badge">POPULAR</div>' : ''}
-                        <i class="fas ${item.i}"></i>
-                        <h3>${item.n}</h3>
-                        <p>${item.d}</p>
+                        ${item.hot ? '<div class="badge">HOT</div>' : ''}
+                        <i class="fas ${item.icon}"></i>
+                        <h3>${lang === 'tr' ? item.trN : item.enN}</h3>
+                        <p>${lang === 'tr' ? item.trD : item.enD}</p>
                         <span class="price"><span>£</span>${item.p}</span>
-                        <a href="${item.l}" class="buy-btn" target="_blank">${store[l].btn}</a>
+                        <a href="https://buy.stripe.com/${item.link}?quantity=1" class="buy-btn" target="_blank">${lang === 'tr' ? 'SATIN AL' : 'BUY NOW'}</a>
                     </div>
                 `;
             });
         }
-        update('tr');
+        changeLang('tr');
     </script>
 </body>
 </html>
