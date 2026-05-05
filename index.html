@@ -3,92 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frost Market | Premium Store</title>
+    <title>Frost Market | Premium Digital Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --p: #00d4ff; --s: #7000ff; --bg: #050b18; --c: rgba(255,255,255,0.05); }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: white; margin: 0; text-align: center; }
+        body { font-family: 'Poppins', sans-serif; background: radial-gradient(circle at top, #111d35 0%, #050b18 100%); color: white; margin: 0; min-height: 100vh; }
         
-        /* Dil Paneli */
-        .nav-bar { display: flex; justify-content: space-between; padding: 20px 5%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
-        .logo { font-family: 'Orbitron'; color: var(--p); font-size: 1.5rem; }
-        .lang-btns button { background: none; border: 1px solid var(--p); color: white; padding: 5px 15px; cursor: pointer; border-radius: 5px; margin-left: 5px; }
-        
-        header { padding: 60px 20px; }
-        h1 { font-family: 'Orbitron'; font-size: 3.5rem; background: linear-gradient(to right, var(--p), var(--s)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        nav { display: flex; justify-content: space-between; padding: 20px 5%; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0,212,255,0.2); }
+        .logo { font-family: 'Orbitron'; color: var(--p); font-size: 1.5rem; letter-spacing: 2px; }
+        .lang-btns button { background: transparent; border: 1px solid var(--p); color: white; padding: 8px 15px; cursor: pointer; border-radius: 5px; transition: 0.3s; font-weight: bold; }
+        .lang-btns button:hover { background: var(--p); color: black; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 80px 20px; }
+        h1 { font-family: 'Orbitron'; font-size: clamp(2.5rem, 8vw, 4rem); margin: 0; background: linear-gradient(to right, #00d4ff, #7000ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header p { opacity: 0.8; font-size: 1.1rem; margin-top: 15px; }
+
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px 100px 20px; }
         
-        /* Modern Kartlar */
-        .card { background: var(--c); padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); border-color: var(--p); box-shadow: 0 0 20px rgba(0,212,255,0.2); }
-        .card i { font-size: 3rem; color: var(--p); margin-bottom: 20px; }
-        .price { font-size: 2.5rem; font-weight: bold; margin: 20px 0; display: block; }
+        .card { background: var(--c); border-radius: 20px; padding: 35px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.4s; position: relative; overflow: hidden; }
+        .card:hover { transform: translateY(-15px); border-color: var(--p); box-shadow: 0 15px 35px rgba(0,212,255,0.2); }
+        .card i { font-size: 3.5rem; color: var(--p); margin-bottom: 25px; display: block; }
         
-        .btn { display: block; background: linear-gradient(45deg, var(--p), var(--s)); color: white; text-decoration: none; padding: 15px; border-radius: 10px; font-weight: bold; text-transform: uppercase; }
-        .btn:hover { filter: brightness(1.2); }
-        p.desc { color: #a0aec0; min-height: 45px; font-size: 0.9rem; }
+        .card h3 { font-family: 'Orbitron'; font-size: 1.6rem; margin: 10px 0; }
+        .card p { font-size: 0.95rem; color: #a0aec0; min-height: 60px; line-height: 1.6; }
+        
+        .price { font-size: 2.8rem; font-weight: 700; margin: 25px 0; display: block; }
+        .price span { font-size: 1.2rem; color: var(--p); vertical-align: super; margin-right: 5px; }
+
+        .buy-btn { display: block; background: linear-gradient(45deg, var(--p), var(--s)); color: white; text-decoration: none; padding: 16px; border-radius: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .buy-btn:hover { transform: scale(1.05); filter: brightness(1.2); box-shadow: 0 0 20px rgba(0,212,255,0.4); }
     </style>
 </head>
 <body>
 
-    <div class="nav-bar">
-        <div class="logo">FROST</div>
+    <nav>
+        <div class="logo">FROST MARKET</div>
         <div class="lang-btns">
-            <button onclick="changeLang('tr')">TR</button>
-            <button onclick="changeLang('en')">EN</button>
+            <button onclick="setLang('tr')">TR</button>
+            <button onclick="setLang('en')">EN</button>
         </div>
-    </div>
+    </nav>
 
     <header>
-        <h1 id="title">FROST MARKET</h1>
-        <p id="subtitle">Profesyonel Dijital Çözümler</p>
+        <h1 id="h-title">FROST MARKET</h1>
+        <p id="h-desc">Yüksek Performanslı Dijital Ürünler ve Güvenli Teslimat</p>
     </header>
 
-    <div class="grid" id="products"></div>
+    <div class="container" id="product-grid">
+        </div>
 
     <script>
-        const data = {
+        const content = {
             tr: {
-                sub: "Profesyonel Dijital Çözümler",
-                buy: "SATIN AL",
-                items: [
-                    { name: "Frost Pack", price: "2", desc: "Temel başlangıç paketi, hızlı teslimat.", icon: "fa-cube", link: "https://buy.stripe.com/28E00lakQfx44bVaeV" },
-                    { name: "Frost Lite", price: "5", desc: "Orta seviye özellikler ve öncelikli erişim.", icon: "fa-bolt", link: "https://buy.stripe.com/28E00lakQfx44bVaeW" },
-                    { name: "Frost Plus", price: "10", desc: "Gelişmiş paket, özel destek ve ekstra özellikler.", icon: "fa-gem", link: "https://buy.stripe.com/28E00lakQfx44bVaeU" },
-                    { name: "Frost Ultra", price: "20", desc: "Sınırsız VIP erişim ve tüm özellikler dahil.", icon: "fa-crown", link: "https://buy.stripe.com/28E00lakQfx44bVaeX" }
+                desc: "Yüksek Performanslı Dijital Ürünler ve Güvenli Teslimat",
+                btn: "HEMEN SATIN AL",
+                products: [
+                    { name: "Frost Pack", price: "2.00", icon: "fa-box-open", link: "https://buy.stripe.com/28E00lakQfx44bVaeV", info: "Başlangıç seviyesi için temel özellikler ve anında aktivasyon." },
+                    { name: "Frost Lite", price: "5.00", icon: "fa-bolt", link: "https://buy.stripe.com/28E00lakQfx44bVaeW", info: "Daha hızlı işlem kapasitesi ve standart öncelikli destek." },
+                    { name: "Frost Plus", price: "10.00", icon: "fa-gem", link: "https://buy.stripe.com/28E00lakQfx44bVaeU", info: "Gelişmiş özellikler seti ve 7/24 premium müşteri desteği." },
+                    { name: "Frost Ultra", price: "20.00", icon: "fa-crown", link: "https://buy.stripe.com/28E00lakQfx44bVaeX", info: "En üst düzey VIP deneyimi, sınırsız erişim ve özel içerikler." }
                 ]
             },
             en: {
-                sub: "Professional Digital Solutions",
-                buy: "BUY NOW",
-                items: [
-                    { name: "Frost Pack", price: "2", desc: "Basic starter pack, instant delivery.", icon: "fa-cube", link: "https://buy.stripe.com/28E00lakQfx44bVaeV" },
-                    { name: "Frost Lite", price: "5", desc: "Mid-tier features and priority access.", icon: "fa-bolt", link: "https://buy.stripe.com/28E00lakQfx44bVaeW" },
-                    { name: "Frost Plus", price: "10", desc: "Advanced package, premium support.", icon: "fa-gem", link: "https://buy.stripe.com/28E00lakQfx44bVaeU" },
-                    { name: "Frost Ultra", price: "20", desc: "Unlimited VIP access, all features included.", icon: "fa-crown", link: "https://buy.stripe.com/28E00lakQfx44bVaeX" }
+                desc: "High Performance Digital Products & Secure Delivery",
+                btn: "BUY NOW",
+                products: [
+                    { name: "Frost Pack", price: "2.00", icon: "fa-box-open", link: "https://buy.stripe.com/28E00lakQfx44bVaeV", info: "Essential features for beginners with instant activation." },
+                    { name: "Frost Lite", price: "5.00", icon: "fa-bolt", link: "https://buy.stripe.com/28E00lakQfx44bVaeW", info: "Faster processing power and standard priority support." },
+                    { name: "Frost Plus", price: "10.00", icon: "fa-gem", link: "https://buy.stripe.com/28E00lakQfx44bVaeU", info: "Advanced feature set and 24/7 premium customer support." },
+                    { name: "Frost Ultra", price: "20.00", icon: "fa-crown", link: "https://buy.stripe.com/28E00lakQfx44bVaeX", info: "The ultimate VIP experience, unlimited access and exclusive content." }
                 ]
             }
         };
 
-        function changeLang(lang) {
-            document.getElementById('subtitle').innerText = data[lang].sub;
-            const container = document.getElementById('products');
-            container.innerHTML = "";
-            data[lang].items.forEach(item => {
-                container.innerHTML += `
+        function setLang(lang) {
+            document.getElementById('h-desc').innerText = content[lang].desc;
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = "";
+
+            content[lang].products.forEach(p => {
+                grid.innerHTML += `
                     <div class="card">
-                        <i class="fas ${item.icon}"></i>
-                        <h3>${item.name}</h3>
-                        <p class="desc">${item.desc}</p>
-                        <span class="price">£${item.price}</span>
-                        <a href="${item.link}" class="btn" target="_blank">${data[lang].buy}</a>
+                        <i class="fas ${p.icon}"></i>
+                        <h3>${p.name}</h3>
+                        <p>${p.info}</p>
+                        <span class="price"><span>£</span>${p.price}</span>
+                        <a href="${p.link}" class="buy-btn" target="_blank">${content[lang].btn}</a>
                     </div>
                 `;
             });
         }
-        changeLang('tr'); // Başlangıç dili
+
+        // Sayfa açıldığında Türkçe başla
+        setLang('tr');
     </script>
 </body>
 </html>
